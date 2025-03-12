@@ -1,0 +1,19 @@
+<table>
+    <thead>
+        <tr>
+            <th>Employee ID</th>
+            <th>Name</th>
+            <th>Department</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each rows}}
+            <tr>
+                <td>{{this.EID}}</td>
+                <td>{{this.E_Name}}</td>
+                <td>{{this.D_Name}}</td>
+                <td><a href="/assigned/{{this.EID}}/{{../P_ID}}">Assign</a></td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table>

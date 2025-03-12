@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCMS - Admin Dashboard</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f9fc;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background: linear-gradient(135deg,#1c1b1b,#716c6c);
+            color: #fff;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1em;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #16a085;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #e0e0e0;
+            margin: 0;
+        }
+
+        .container {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #666;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+
+        .feature {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 30%;
+        }
+
+        .feature h3 {
+            color: #1abc9c;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 30px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="logo">SCMS</h1>
+        <div class="top">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/empd">Employee Section</a></li>
+                <li><a href="/department">Department</a></li>
+                <li><a href="/project">Project</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </div>
+    </header>
+    <hr>
+
+    <div class="container">
+        <h2>Welcome, Admin!</h2>
+        <p>As an administrator of SCMS, you can efficiently manage employee records, oversee department functions, track projects, and more.</p>
+
+        <div class="features">
+            <div class="feature">
+                <h3>Employee Management</h3>
+                <p>Access detailed employee records, monitor attendance, and manage payroll—all from a single, easy-to-use dashboard.</p>
+            </div>
+            <div class="feature">
+                <h3>Project Oversight</h3>
+                <p>Monitor ongoing projects, ensure milestones are met, and optimize resources for successful project delivery.</p>
+            </div>
+            <div class="feature">
+                <h3>Department Control</h3>
+                <p>View department performance, allocate resources, and streamline interdepartmental communication for smoother operations.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <span>&copy; 2024 SCMS. All rights reserved.</span>
+    </footer>
+</body>
+</html>

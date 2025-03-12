@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department Achievements</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #333;
+            color: #fff;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1em;
+        }
+        a:hover {
+            color: #16a085;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h4 {
+            font-size: 1.6em;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        /* Compact Table Styling */
+        .compact-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+
+        .compact-table th, .compact-table td {
+            padding: 8px 10px;
+            border-bottom: 1px solid #e0e0e0;
+            text-align: left;
+        }
+
+        .compact-table th {
+            background-color: #fafafa;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .compact-table tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        .compact-table .name-link {
+            color: #333;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .compact-table .name-link:hover {
+            color: #007acc;
+        }
+
+        /* Achievement section */
+        .achievement {
+            border-left: 4px solid #007acc;
+            padding: 15px;
+            margin-top: 15px;
+            background-color: #f8faff;
+            border-radius: 4px;
+        }
+
+        .achievement h5 {
+            font-size: 1.2em;
+            color: #333;
+            margin: 0;
+        }
+
+        .achievement p {
+            font-size: 0.9em;
+            color: #555;
+            margin: 5px 0 0;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 30px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="logo">SCMS</h1>
+        <ul>
+            <li><a href="/">HOME</a></li>
+            <li><a href="/empd">Employee Section</a></li>
+            <li><a href="/department">Department</a></li>
+            <li><a href="/project">Project</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+    </header>
+
+    <div class="container">
+        <h4>Employees of {{rows.[0].D_Name}} Department</h4>
+        <table class="compact-table">
+            <thead>
+                <tr>
+                    <th>EID</th>
+                    <th>Name</th>
+                    <th>Sex</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each row}}
+                    <tr>
+                        <td>{{this.EID}}</td>
+                        <td><a class="name-link" href="/view/{{this.EID}}">{{this.E_Name}}</a></td>
+                        <td>{{this.sex}}</td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+        <h4>Achievements of {{rows.[0].D_Name}} Department</h4>
+        {{#each rows}}
+        <div class="achievement">
+            <h5>{{this.Achievement_Title}}</h5>
+            <p>{{this.Description}}</p>
+        </div>
+        {{/each}}
+    </div>
+
+    <footer>
+        <p>&copy; 2024 SCMS. All rights reserved.</p>
+    </footer>
+</body>
+</html>

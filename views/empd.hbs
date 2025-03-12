@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management - SCMS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f7f9fc;
+            color: #444;
+            margin: 0;
+            padding: 0;
+        }
+        .xxx {
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background: linear-gradient(135deg,#1c1b1b,#716c6c);
+            
+
+            color: #fff;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1em;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #16a085;
+        }
+
+        h4 {
+            font-size: 1.4em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .form-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 35px;
+        }
+
+        .form-container form, .form-container a {
+            display: inline-block;
+        }
+
+        select, input[type="text"], button {
+            padding: 5px;
+            font-size: 0.9em;
+        }
+
+        .new-employee-btn {
+            padding: 5px 10px;
+            background-color: #4c4747;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.8em;
+            transition: background-color 0.3ms ease;
+        }
+
+        .new-employee-btn:hover {
+            background-color: #726666;
+            color: white;
+        }
+
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 15px;
+        }
+
+        .compact-modern-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.75em;
+        }
+
+        .compact-modern-table th, .compact-modern-table td {
+            padding: 4px 8px;
+            border-bottom: 1px solid #e0e0e0;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        .compact-modern-table thead {
+            background-color: #4c4747;
+            color: #ffffff;
+        }
+
+        .compact-modern-table tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .compact-modern-table tbody tr:nth-child(even) {
+            background-color: #f8f8f8;
+        }
+
+        .action-link {
+            color: #3498db;
+            text-decoration: none;
+            margin: 0 3px;
+            font-size: 0.75em;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        .action-link:hover {
+            background-color: #3498db;
+            color:white;
+        }
+
+        .action-link.delete {
+            color: #e74c3c;
+        }
+
+        .action-link.delete:hover {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .action-link.view {
+            color: #2ecc71;
+        }
+
+        .action-link.view:hover {
+            background-color: #2ecc71;
+            color: white;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #4c4747;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="logo">SCMS</h1>
+        <div class="top">
+            <ul>
+                <li><a href="/">HOME</a></li>
+                <li><a href="/empd">Employee Section</a></li>
+                <li><a href="/department">Department</a></li>
+                <li><a href="/project">Project</a></li>
+                <li><a href="">About</a></li>
+            </ul>
+        </div>
+    </header>
+    <div class="xxx">
+        <hr>
+        <h4>Employee Info</h4>
+
+        <div class="form-container">
+            <a href="/newemployee" class="new-employee-btn">+ Add Employee</a>
+            
+            <form id="filterSortForm" method="GET" action="/empd">
+                <label for="filterOption">Filter:</label>
+                <select id="filterOption" name="filter">
+                    <option value="">Select</option>
+                    <option value="a">experience > 4</option>
+                    <option value="b">experience > 2</option>
+                    <option value="c">experience < 2</option>
+                    <option value="d">Male</option>
+                    <option value="e">Female</option>
+                </select>
+                <label for="sortOption">Sort by:</label>
+                <select id="sortOption" name="sort">
+                    <option value="">Select</option>
+                    <option value="D_ID">Department ID</option>
+                    <option value="age">Age</option>
+                    <option value="Salary">Salary</option>
+                    <option value="DOJ">Date of Joining</option>
+                </select>
+                <button type="submit">Apply</button>
+            </form>
+
+            <form id="searchForm" method="GET" action="/empd">
+                <label for="searchType">Search by:</label>
+                <select id="searchType" name="searchType">
+                    <option value="name">Name</option>
+                    <option value="id">ID</option>
+                </select>
+                <input type="text" id="searchQuery" name="searchQuery" placeholder="Enter search term" required>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
+        <div class="table-container">
+            <table class="compact-modern-table">
+                <thead>
+                    <tr>
+                        <th>Eid</th>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th>Salary</th>
+                        <th>Address</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Dept No</th>
+                        <th>Age</th>
+                        <th>Actions</th>
+                        <th>DOB</th>
+                        <th>DOJ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each rows}}
+                        <tr>
+                            <td>{{this.EID}}</td>
+                            <td>{{this.E_Name}}</td>
+                            <td>{{this.Sex}}</td>
+                            <td>{{this.Salary}}</td>
+                            <td>{{this.Address}}</td>
+                            <td>{{this.Ph_no}}</td>
+                            <td>{{this.Email}}</td>
+                            <td>{{this.D_ID}}</td>
+                            <td>{{this.Age}}</td>
+                            <td>
+                                <a href="/editemp/{{this.EID}}" class="action-link edit">Edit</a>
+                                <a onclick="return confirm('Are you sure you want to delete this employee? This action will also remove any associated projects, team assignments, and records linked to this employee in the system.')"  href="/deleteemp/{{this.EID}}" class="action-link delete">Del</a>
+                                <a href="/view/{{this.EID}}" class="action-link view">View</a>
+                            </td>
+                            <td class="date" data-date="{{this.DOB}}"></td>
+                            <td class="date" data-date="{{this.DOJ}}"></td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+
+        <hr>
+        <footer>
+            <p>&copy; 2024 SCMS. All rights reserved.</p>
+        </footer>
+    </div>
+    <script>
+        document.querySelectorAll('.date').forEach(cell => {
+            const date = new Date(cell.dataset.date);
+            const formattedDate = date.toISOString().split('T')[0];
+            cell.textContent = formattedDate;
+        });
+    </script>
+</body>
+</html>

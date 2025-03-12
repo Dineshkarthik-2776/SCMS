@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Profile - SCMS</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #eef2f7;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        .profile-container {
+            max-width: 950px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border-radius: 12px;
+        }
+
+        .profile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #2c3e50;
+            color: #ffffff;
+            padding: 15px;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .profile-header h2 {
+            margin: 0;
+        }
+
+
+        .profile-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .profile-details div {
+            background-color: #f7f9fc;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .profile-details span {
+            font-weight: bold;
+            color: #2980b9;
+        }
+
+        .profile-details p {
+            margin: 8px 0 0;
+            color: #34495e;
+        }
+
+        .section-title {
+            font-size: 1.3em;
+            color: #2c3e50;
+            margin-top: 30px;
+            grid-column: span 2;
+        }
+
+        hr {
+            margin: 30px 0;
+            border: none;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.85em;
+            color: #888;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-header">
+            <h2>Employee Profile</h2>
+        </div>
+        {{#each rows}}
+        <div class="profile-details">
+            <div>
+                <span>EID:</span>
+                <p>{{this.Eid}}</p>
+            </div>
+            <div>
+                <span>Name:</span>
+                <p>{{this.E_Name}}</p>
+            </div>
+            <div>
+                <span>Gender:</span>
+                <p>{{this.Sex}}</p>
+            </div>
+            <div>
+                <span>Age:</span>
+                <p>{{this.age}}</p>
+            </div>
+           
+            <div>
+                <span>Address:</span>
+                <p>{{this.Address}}</p>
+            </div>
+            <div>
+                <span>Phone:</span>
+                <p>{{this.Ph_no}}</p>
+            </div>
+            <div>
+                <span>Email:</span>
+                <p>{{this.Email}}</p>
+            </div>
+            <div>
+                <span>Department:</span>
+                <p>{{this.D_Name}}</p>
+            </div>
+             <div>
+                <span>Salary:</span>
+                <p>{{this.Salary}}</p>
+            </div>
+            <div>
+                <span>Date of Joining:</span>
+                <p  class="date" data-date="{{this.DOJ}}" ></p>
+            </div>
+            <div>
+                <span>Skill:</span>
+                <p>{{this.Skills}}</p>
+            </div>
+            <div>
+                <span>Project Name:</span>
+                <p>{{this.Projects}}</p>
+            </div>
+             <div>
+                <span>Experience :</span>
+                <p>{{this.exp}} (Years)</p>
+            </div>
+             <div>
+                <span>Training Name:</span>
+                <p>{{this.Trainings}}</p>
+            </div>
+            <div>
+                <span>Dependents:</span>
+                <p>{{this.Dependents}}</p>
+            </div>
+            
+            
+           
+        </div>
+        {{/each}}
+        <hr>
+        <footer>
+            <p>&copy; 2024 SCMS. All rights reserved.</p>
+        </footer>
+    </div>
+
+     <script>
+        document.querySelectorAll('.date').forEach(cell => {
+            const date = new Date(cell.dataset.date);
+            const formattedDate = date.toISOString().split('T')[0];
+            cell.textContent = formattedDate;
+        });
+    </script>
+
+</body>
+</html>
